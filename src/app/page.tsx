@@ -167,13 +167,12 @@ export default function Home() {
           {/* Right side - Video */}
           <div className="flex-1 flex justify-center w-full overflow-hidden">
             <div 
-              className="rounded-lg w-[90%] lg:w-full lg:max-w-lg flex items-center justify-center"
+              className="rounded-lg w-[90%] lg:w-full lg:max-w-lg flex items-center justify-center min-h-[300px] lg:min-h-[380px]"
               style={{
                 border: '1px solid rgba(0, 0, 0, 0.1)',
                 boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
                 overflow: 'hidden',
-                height: 'auto',
-                minHeight: '380px'
+                height: 'auto'
               }}
             >
               <video 
