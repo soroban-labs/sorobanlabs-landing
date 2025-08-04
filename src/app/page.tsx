@@ -15,6 +15,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-auto font-mono bg-[#F5F5F5] text-[#171717]">
+      <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
       {/* Base grid - always visible */}
       <div className="fixed inset-0 grid-lines-base pointer-events-none" />
       
@@ -58,12 +59,12 @@ export default function Home() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: #FEA903;
+          background: #E6E6FA;
           z-index: -1;
         }
         
         .highlight-text:hover::before {
-          background: #FEA903;
+          background: #E6E6FA;
           transform: scaleX(0);
           transform-origin: left;
           animation: highlight-sweep 0.6s ease-out 0.1s forwards;
@@ -109,11 +110,39 @@ export default function Home() {
       </nav>
 
       <main className="relative z-0 flex flex-col items-center justify-center min-h-screen p-4 sm:p-10 py-16 sm:py-32">
-        <div className="text-center mb-12 sm:mb-20">
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal mb-8 leading-tight text-left">
+        <div className="text-center mb-20 sm:mb-32">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal mb-12 leading-tight text-left">
             <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(60px, 12vw, 96px)'}}>Simulate</div>
             <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(50px, 10vw, 80px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
           </h1>
+          <p className="text-xl sm:text-2xl font-medium mb-12 text-left" style={{fontFamily: '"Red Hat Mono", monospace', color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.<br />No coding required.</p>
+          <button 
+            className="px-12 py-4 text-xl font-normal mb-20"
+            style={{
+              fontFamily: 'var(--font-libre-franklin)',
+              backgroundColor: '#E6E6FA',
+              color: '#6B6A9E',
+              border: '2px solid #6B6A9E',
+              borderRadius: '0px',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 12px rgba(107, 106, 158, 0.3)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#6B6A9E';
+              e.currentTarget.style.color = '#E6E6FA';
+              e.currentTarget.style.borderColor = '#6B6A9E';
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#E6E6FA';
+              e.currentTarget.style.color = '#6B6A9E';
+              e.currentTarget.style.borderColor = '#6B6A9E';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.3)';
+            }}
+          >
+            Simulate Now
+          </button>
         </div>
         
         {/* Centered x.mp4 video */}
@@ -269,6 +298,59 @@ export default function Home() {
               }}
             />
           </div>
+        </div>
+        
+        {/* Final CTA Section */}
+        <div className="flex flex-col items-center justify-center w-full max-w-6xl mt-16 lg:mt-32 p-4 sm:p-8 rounded-lg" style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}>
+          <div className="w-full mb-8">
+            <div 
+              className="p-6 sm:p-12 rounded-lg w-full" 
+              style={{
+                backgroundColor: '#E6E6FA'
+              }}
+            >
+              <div 
+                className="font-normal text-center" 
+                style={{
+                  fontFamily: 'var(--font-libre-franklin)', 
+                  color: '#000000',
+                  fontSize: 'clamp(24px, 5vw, 40px)', 
+                  letterSpacing: '-2%',
+                  lineHeight: '1.1'
+                }}
+              >
+                A system that builds what you <span style={{fontFamily: 'var(--font-libre-baskerville)', fontStyle: 'italic'}}>imagine</span>,<br />one component at a time.
+              </div>
+            </div>
+          </div>
+          
+          <button 
+            className="px-12 py-4 text-xl font-normal"
+            style={{
+              fontFamily: 'var(--font-libre-franklin)',
+              backgroundColor: '#E6E6FA',
+              color: '#6B6A9E',
+              border: '2px solid #6B6A9E',
+              borderRadius: '0px',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 12px rgba(107, 106, 158, 0.3)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#6B6A9E';
+              e.currentTarget.style.color = '#E6E6FA';
+              e.currentTarget.style.borderColor = '#6B6A9E';
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#E6E6FA';
+              e.currentTarget.style.color = '#6B6A9E';
+              e.currentTarget.style.borderColor = '#6B6A9E';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.3)';
+            }}
+          >
+            Simulate Now
+          </button>
         </div>
       </main>
       <footer className="relative bottom-0 left-0 right-0 p-4 text-center z-10 mt-20 border-t" style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}>
