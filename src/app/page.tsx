@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -128,6 +129,7 @@ export default function Home() {
               transition: 'all 0.2s ease',
               boxShadow: '0 4px 12px rgba(107, 106, 158, 0.3)'
             }}
+            onClick={() => setIsModalOpen(true)}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = '#6B6A9E';
               e.currentTarget.style.color = '#E6E6FA';
@@ -336,6 +338,7 @@ export default function Home() {
               transition: 'all 0.2s ease',
               boxShadow: '0 4px 12px rgba(107, 106, 158, 0.3)'
             }}
+            onClick={() => setIsModalOpen(true)}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = '#6B6A9E';
               e.currentTarget.style.color = '#E6E6FA';
@@ -353,6 +356,118 @@ export default function Home() {
           </button>
         </div>
       </main>
+      
+      {/* Email Signup Modal */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 flex items-center justify-center z-50"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          onClick={(e) => e.target === e.currentTarget && setIsModalOpen(false)}
+        >
+          <div 
+            className="p-8 rounded-lg max-w-md w-full mx-4"
+            style={{
+              backgroundColor: '#F5F5F5',
+              border: '2px solid #6B6A9E',
+              boxShadow: '0 8px 24px rgba(107, 106, 158, 0.3)'
+            }}
+          >
+            <h2 
+              className="text-2xl font-normal mb-4 text-center"
+              style={{
+                fontFamily: 'var(--font-libre-baskerville)',
+                fontStyle: 'italic',
+                color: '#000000'
+              }}
+            >
+              Hi! We're glad you're interested
+            </h2>
+            <p 
+              className="text-base mb-6 text-center"
+              style={{
+                fontFamily: '"Red Hat Mono", monospace',
+                color: '#343434',
+                lineHeight: '1.5'
+              }}
+            >
+              Please type in your email address so we can send the link of the beta to you.
+            </p>
+            <form 
+              action="https://formspree.io/f/xwpqjrwl"
+              method="POST" 
+              className="space-y-4"
+              onSubmit={() => {
+                setTimeout(() => setIsModalOpen(false), 1000);
+              }}
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="your.email@example.com"
+                required
+                className="w-full px-4 py-3 border-2 rounded-none"
+                style={{
+                  fontFamily: '"Red Hat Mono", monospace',
+                  backgroundColor: '#F5F5F5',
+                  borderColor: '#6B6A9E',
+                  color: '#343434',
+                  fontSize: '14px'
+                }}
+              />
+              <div className="flex gap-3 justify-center">
+                <button
+                  type="submit"
+                  className="px-6 py-2 text-sm font-normal"
+                  style={{
+                    fontFamily: 'var(--font-libre-franklin)',
+                    backgroundColor: '#E6E6FA',
+                    color: '#6B6A9E',
+                    border: '2px solid #6B6A9E',
+                    borderRadius: '0px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#6B6A9E';
+                    e.currentTarget.style.color = '#E6E6FA';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#E6E6FA';
+                    e.currentTarget.style.color = '#6B6A9E';
+                  }}
+                >
+                  Send Me Access
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-6 py-2 text-sm font-normal"
+                  style={{
+                    fontFamily: 'var(--font-libre-franklin)',
+                    backgroundColor: 'transparent',
+                    color: '#999999',
+                    border: '2px solid #999999',
+                    borderRadius: '0px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#6B6A9E';
+                    e.currentTarget.style.color = '#6B6A9E';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#999999';
+                    e.currentTarget.style.color = '#999999';
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      
       <footer className="relative bottom-0 left-0 right-0 p-4 text-center z-10 mt-20 border-t" style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}>
         <img 
           src="/heart.svg" 
