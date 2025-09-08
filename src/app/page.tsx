@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Button from '../components/Button';
 import NavButton from '../components/NavButton';
+import Footer from '../components/Footer';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -18,19 +19,21 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-auto font-mono bg-[#F5F5F5] text-[#171717]">
+    <div className="min-h-screen overflow-auto font-mono bg-white text-[#171717]">
       <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
-      {/* Base grid - always visible */}
-      <div className="fixed inset-0 grid-lines-base pointer-events-none" />
+      {/* Base grid with fade-out effect */}
+      <div 
+        className="fixed inset-0 grid-lines-fade pointer-events-none"
+      />
       
       {/* Glow effect - follows cursor */}
       <div 
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: '#F5F5F5',
-          boxShadow: `0 0 50px 25px rgba(0, 0, 0, 0.05) inset`,
-          maskImage: `radial-gradient(50px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
-          WebkitMaskImage: `radial-gradient(50px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
+          background: 'white',
+          boxShadow: `0 0 50px 25px rgba(0, 0, 0, 0.025) inset`,
+          maskImage: `radial-gradient(40px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
+          WebkitMaskImage: `radial-gradient(40px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
         }}
       >
         <div className="w-full h-full grid-lines-glow" />
@@ -44,10 +47,19 @@ export default function Home() {
           background-size: 15px 15px;
         }
         
+        .grid-lines-fade {
+          background-image: 
+            linear-gradient(to right, rgba(128, 128, 128, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(128, 128, 128, 0.04) 1px, transparent 1px);
+          background-size: 15px 15px;
+          mask-image: linear-gradient(to bottom, black 0, black 2000px, rgba(0,0,0,0.8) 2040px, rgba(0,0,0,0.6) 2050px, rgba(0,0,0,0.4) 2060px, rgba(0,0,0,0.2) 2070px, transparent 2080px);
+          -webkit-mask-image: linear-gradient(to bottom, black 0, black 2000px, rgba(0,0,0,0.8) 2040px, rgba(0,0,0,0.6) 2050px, rgba(0,0,0,0.4) 2060px, rgba(0,0,0,0.2) 2070px, transparent 2080px);
+        }
+        
         .grid-lines-glow {
           background-image: 
-            linear-gradient(to right, rgba(50, 50, 50, 0.3) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(50, 50, 50, 0.2) 1px, transparent 1px);
+            linear-gradient(to right, rgba(50, 50, 50, 0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(50, 50, 50, 0.1) 1px, transparent 1px);
           background-size: 15px 15px;
         }
         
@@ -97,10 +109,10 @@ export default function Home() {
       {/* Navbar */}
       <nav className="relative z-10 w-full px-4 sm:px-6 py-4 border-b" style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}>
         <div className="flex justify-between items-center w-full">
-          <div className="text-xs font-normal" style={{ fontFamily: 'monospace', color: '#999999' }}>
+          <div className="text-base font-normal" style={{ fontFamily: 'monospace', color: '#999999' }}>
             soroban labs
           </div>
-          <div className="flex items-center gap-3 text-xs" style={{ fontFamily: 'monospace', color: '#999999' }}>
+          <div className="flex items-center gap-3 text-base" style={{ fontFamily: 'monospace', color: '#999999' }}>
             <a 
               href="mailto:atharva@sorobanlabs.io"
               style={{color: '#999999'}}
@@ -151,7 +163,8 @@ export default function Home() {
               className="w-full h-auto block"
               style={{
                 clipPath: 'inset(0 1.02% 0 1.02%)',
-                transform: 'scale(1.0204)'
+                transform: 'scale(1.0204)',
+                filter: 'brightness(1.06) saturate(0.98)'
               }}
             />
           </div>
@@ -330,7 +343,7 @@ export default function Home() {
           <div 
             className="p-8 rounded-lg max-w-md w-full mx-4"
             style={{
-              backgroundColor: '#F5F5F5',
+              backgroundColor: 'white',
               border: '2px solid #6B6A9E',
               boxShadow: '0 8px 24px rgba(107, 106, 158, 0.3)'
             }}
@@ -371,7 +384,7 @@ export default function Home() {
                 className="w-full px-4 py-3 border-2 rounded-none"
                 style={{
                   fontFamily: '"Red Hat Mono", monospace',
-                  backgroundColor: '#F5F5F5',
+                  backgroundColor: 'white',
                   borderColor: '#6B6A9E',
                   color: '#343434',
                   fontSize: '14px'
@@ -383,7 +396,7 @@ export default function Home() {
                   className="px-6 py-2 text-sm font-normal"
                   style={{
                     fontFamily: 'var(--font-libre-franklin)',
-                    backgroundColor: '#E6E6FA',
+                    backgroundColor: 'white',
                     color: '#6B6A9E',
                     border: '2px solid #6B6A9E',
                     borderRadius: '0px',
@@ -392,10 +405,10 @@ export default function Home() {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = '#6B6A9E';
-                    e.currentTarget.style.color = '#E6E6FA';
+                    e.currentTarget.style.color = 'white';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#E6E6FA';
+                    e.currentTarget.style.backgroundColor = 'white';
                     e.currentTarget.style.color = '#6B6A9E';
                   }}
                 >
@@ -441,7 +454,7 @@ export default function Home() {
           <div 
             className="p-8 rounded-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col"
             style={{
-              backgroundColor: '#F5F5F5',
+              backgroundColor: 'white',
               border: '2px solid #6B6A9E',
               boxShadow: '0 8px 24px rgba(107, 106, 158, 0.3)'
             }}
@@ -507,14 +520,7 @@ export default function Home() {
         </div>
       )}
       
-      <footer className="relative bottom-0 left-0 right-0 p-4 text-center z-10 mt-20 border-t" style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}>
-        <img 
-          src="/heart.svg" 
-          alt="heart" 
-          className="inline-block"
-          style={{ width: '12px', height: '12px', opacity: 0.6 }}
-        />
-      </footer>
+      <Footer />
     </div>
   );
 }

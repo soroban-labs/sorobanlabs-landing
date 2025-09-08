@@ -9,7 +9,7 @@ export default function NavButton({ onClick, children }: NavButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="px-3 py-1.5 text-xs"
+      className="px-4 py-2 text-sm"
       style={{
         fontFamily: 'var(--font-libre-franklin)',
         backgroundColor: 'transparent',
@@ -22,7 +22,7 @@ export default function NavButton({ onClick, children }: NavButtonProps) {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#6B6A9E';
-        e.currentTarget.style.color = '#F5F5F5';
+        e.currentTarget.style.color = 'white';
         e.currentTarget.style.borderColor = '#6B6A9E';
         e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
       }}
