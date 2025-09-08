@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Button from '../components/Button';
 import NavButton from '../components/NavButton';
 import Footer from '../components/Footer';
+import DesmosGraph from '../components/DesmosGraph';
+import { defaultExpressions } from '../data/desmosExpressions';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -133,15 +135,29 @@ export default function Home() {
 
       <main className="relative z-0 flex flex-col items-center justify-center min-h-screen p-4 sm:p-10 py-16 sm:py-32">
         <div className="text-center mb-20 sm:mb-32">
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal mb-8 leading-tight text-left">
-            <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(70px, 14vw, 110px)'}}>Simulate</div>
-            <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(60px, 12vw, 95px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
-          </h1>
-          <p className="text-2xl sm:text-3xl font-medium mb-12 text-left" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-32">
-            <Button onClick={() => setIsModalOpen(true)}>
-              Simulate Now
-            </Button>
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-24 mb-8">
+            <div className="flex-1 flex flex-col justify-center lg:min-h-[500px]">
+              <div>
+                <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal leading-tight text-left">
+                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Simulate</div>
+                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
+                </h1>
+                <p className="text-xl sm:text-2xl font-medium mb-12 text-left mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.</p>
+                <div className="flex justify-start">
+                  <Button variant="dark" onClick={() => setIsModalOpen(true)}>
+                    Simulate Now
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <div className="flex-shrink-0">
+              <DesmosGraph 
+                expressions={defaultExpressions}
+                width="500px"
+                height="500px"
+                className="shadow-lg"
+              />
+            </div>
           </div>
         </div>
         
@@ -326,7 +342,7 @@ export default function Home() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button onClick={() => setIsModalOpen(true)}>
+            <Button variant="dark" onClick={() => setIsModalOpen(true)}>
               Simulate Now
             </Button>
           </div>
