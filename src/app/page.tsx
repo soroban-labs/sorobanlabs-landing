@@ -1,5 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
+import Button from '../components/Button';
+import NavButton from '../components/NavButton';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -17,7 +19,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-auto font-mono bg-[#F5F5F5] text-[#171717]">
-      <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
       {/* Base grid - always visible */}
       <div className="fixed inset-0 grid-lines-base pointer-events-none" />
       
@@ -98,7 +100,7 @@ export default function Home() {
           <div className="text-xs font-normal" style={{ fontFamily: 'monospace', color: '#999999' }}>
             soroban labs
           </div>
-          <div className="text-xs" style={{ fontFamily: 'monospace', color: '#999999' }}>
+          <div className="flex items-center gap-3 text-xs" style={{ fontFamily: 'monospace', color: '#999999' }}>
             <a 
               href="mailto:atharva@sorobanlabs.io"
               style={{color: '#999999'}}
@@ -107,75 +109,27 @@ export default function Home() {
             >
               atharva@sorobanlabs.io
             </a>
+            <NavButton onClick={() => setIsCalendlyModalOpen(true)}>
+              Book 1:1
+            </NavButton>
+            <NavButton onClick={() => setIsModalOpen(true)}>
+              Simulate Now
+            </NavButton>
           </div>
         </div>
       </nav>
 
       <main className="relative z-0 flex flex-col items-center justify-center min-h-screen p-4 sm:p-10 py-16 sm:py-32">
         <div className="text-center mb-20 sm:mb-32">
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal mb-12 leading-tight text-left">
-            <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(60px, 12vw, 96px)'}}>Simulate</div>
-            <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(50px, 10vw, 80px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal mb-8 leading-tight text-left">
+            <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(70px, 14vw, 110px)'}}>Simulate</div>
+            <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(60px, 12vw, 95px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
           </h1>
-          <p className="text-xl sm:text-2xl font-medium mb-12 text-left" style={{fontFamily: '"Red Hat Mono", monospace', color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.<br />No coding required.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-            <button 
-              className="px-12 py-4 text-xl font-normal"
-              style={{
-                fontFamily: 'var(--font-libre-franklin)',
-                backgroundColor: '#E6E6FA',
-                color: '#6B6A9E',
-                border: '2px solid #6B6A9E',
-                borderRadius: '0px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 4px 12px rgba(107, 106, 158, 0.3)'
-              }}
-              onClick={() => setIsModalOpen(true)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#6B6A9E';
-                e.currentTarget.style.color = '#E6E6FA';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#E6E6FA';
-                e.currentTarget.style.color = '#6B6A9E';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.3)';
-              }}
-            >
+          <p className="text-2xl sm:text-3xl font-medium mb-12 text-left" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-32">
+            <Button onClick={() => setIsModalOpen(true)}>
               Simulate Now
-            </button>
-            
-            <button 
-              className="px-12 py-4 text-xl font-normal"
-              style={{
-                fontFamily: 'var(--font-libre-franklin)',
-                backgroundColor: 'transparent',
-                color: '#6B6A9E',
-                border: '2px solid #6B6A9E',
-                borderRadius: '0px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 4px 12px rgba(107, 106, 158, 0.2)'
-              }}
-              onClick={() => setIsCalendlyModalOpen(true)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#6B6A9E';
-                e.currentTarget.style.color = '#F5F5F5';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = '#6B6A9E';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.2)';
-              }}
-            >
-              Book 1:1
-            </button>
+            </Button>
           </div>
         </div>
         
@@ -359,63 +313,9 @@ export default function Home() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
-              className="px-12 py-4 text-xl font-normal"
-              style={{
-                fontFamily: 'var(--font-libre-franklin)',
-                backgroundColor: '#E6E6FA',
-                color: '#6B6A9E',
-                border: '2px solid #6B6A9E',
-                borderRadius: '0px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 4px 12px rgba(107, 106, 158, 0.3)'
-              }}
-              onClick={() => setIsModalOpen(true)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#6B6A9E';
-                e.currentTarget.style.color = '#E6E6FA';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#E6E6FA';
-                e.currentTarget.style.color = '#6B6A9E';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.3)';
-              }}
-            >
+            <Button onClick={() => setIsModalOpen(true)}>
               Simulate Now
-            </button>
-            
-            <button 
-              className="px-12 py-4 text-xl font-normal"
-              style={{
-                fontFamily: 'var(--font-libre-franklin)',
-                backgroundColor: 'transparent',
-                color: '#6B6A9E',
-                border: '2px solid #6B6A9E',
-                borderRadius: '0px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 4px 12px rgba(107, 106, 158, 0.2)'
-              }}
-              onClick={() => setIsCalendlyModalOpen(true)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#6B6A9E';
-                e.currentTarget.style.color = '#F5F5F5';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = '#6B6A9E';
-                e.currentTarget.style.borderColor = '#6B6A9E';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.2)';
-              }}
-            >
-              Book 1:1
-            </button>
+            </Button>
           </div>
         </div>
       </main>
