@@ -115,14 +115,6 @@ export default function Home() {
             soroban labs
           </div>
           <div className="flex items-center gap-3 text-base" style={{ fontFamily: 'monospace', color: '#999999' }}>
-            <a 
-              href="mailto:atharva@sorobanlabs.io"
-              style={{color: '#999999'}}
-              onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.color = '#666666'}
-              onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.color = '#999999'}
-            >
-              atharva@sorobanlabs.io
-            </a>
             <NavButton onClick={() => setIsCalendlyModalOpen(true)}>
               Book 1:1
             </NavButton>
