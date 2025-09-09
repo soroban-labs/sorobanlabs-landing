@@ -6,11 +6,11 @@ import Footer from '../components/Footer';
 import DesmosGraph from '../components/DesmosGraph';
 import DesmosGraph3D from '../components/DesmosGraph3D';
 import { defaultExpressions, glucoseExpressions } from '../data/desmosExpressions';
+import Link from 'next/link';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false);
   const [currentSubject, setCurrentSubject] = useState('physics');
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -152,9 +152,35 @@ export default function Home() {
             soroban labs
           </div>
           <div className="flex items-center gap-3 text-base" style={{ fontFamily: 'monospace', color: '#999999' }}>
-            <NavButton onClick={() => setIsCalendlyModalOpen(true)}>
-              Book 1:1
-            </NavButton>
+            <Link href="/talk-to-us">
+              <div
+                className="px-4 py-2 text-sm"
+                style={{
+                  fontFamily: 'var(--font-libre-franklin)',
+                  backgroundColor: 'transparent',
+                  color: '#6B6A9E',
+                  border: '1px solid #6B6A9E',
+                  borderRadius: '0px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 4px 12px rgba(107, 106, 158, 0.2)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#6B6A9E';
+                  e.currentTarget.style.color = 'white';
+                  e.currentTarget.style.borderColor = '#6B6A9E';
+                  e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#6B6A9E';
+                  e.currentTarget.style.borderColor = '#6B6A9E';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.2)';
+                }}
+              >
+                Talk to us
+              </div>
+            </Link>
             <NavButton onClick={() => setIsModalOpen(true)}>
               Simulate Now
             </NavButton>
@@ -514,82 +540,6 @@ export default function Home() {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-      )}
-      
-      {/* Calendly Modal */}
-      {isCalendlyModalOpen && (
-        <div 
-          className="fixed inset-0 flex items-center justify-center z-50"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
-          onClick={(e) => e.target === e.currentTarget && setIsCalendlyModalOpen(false)}
-        >
-          <div 
-            className="p-8 rounded-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col"
-            style={{
-              backgroundColor: 'white',
-              border: '2px solid #6B6A9E',
-              boxShadow: '0 8px 24px rgba(107, 106, 158, 0.3)'
-            }}
-          >
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h2 
-                  className="text-2xl font-normal mb-3"
-                  style={{
-                    fontFamily: 'var(--font-libre-baskerville)',
-                    fontStyle: 'italic',
-                    color: '#000000'
-                  }}
-                >
-                  Let&apos;s Connect
-                </h2>
-                <p 
-                  className="text-base mb-4"
-                  style={{
-                    fontFamily: '"Red Hat Mono", monospace',
-                    color: '#343434',
-                    lineHeight: '1.5'
-                  }}
-                >
-                  Hi, I&apos;m Atharva, Founder of Soroban Labs. I&apos;d love to hear how we can make this tool more useful for you. No sales pitch—just a quick chat at a time that works best for you.
-                </p>
-              </div>
-              <button
-                onClick={() => setIsCalendlyModalOpen(false)}
-                className="text-2xl"
-                style={{
-                  color: '#999999',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '0',
-                  lineHeight: '1'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#6B6A9E';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#999999';
-                }}
-              >
-                ×
-              </button>
-            </div>
-            
-            <div className="flex-1 overflow-hidden">
-              <iframe
-                src="https://calendly.com/aryaatharva18/new-meeting?embed_domain=localhost&embed_type=Inline"
-                width="100%"
-                height="600"
-                title="Schedule a meeting"
-                style={{
-                  border: 'none',
-                  borderRadius: '4px'
-                }}
-              />
-            </div>
           </div>
         </div>
       )}
