@@ -10,6 +10,8 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false);
+  const [currentSubject, setCurrentSubject] = useState('physics');
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -19,6 +21,40 @@ export default function Home() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const animateTextChange = (newSubject: string) => {
+    if (isAnimating || currentSubject === newSubject) return;
+    
+    setIsAnimating(true);
+    const currentText = currentSubject;
+    const targetText = newSubject;
+    const maxLength = Math.max(currentText.length, targetText.length);
+    
+    let step = 0;
+    const interval = setInterval(() => {
+      if (step <= maxLength) {
+        const animatedText = targetText.slice(0, step) + currentText.slice(step);
+        setCurrentSubject(animatedText.slice(0, maxLength));
+        step++;
+      } else {
+        setCurrentSubject(targetText);
+        setIsAnimating(false);
+        clearInterval(interval);
+      }
+    }, 50);
+  };
+
+  useEffect(() => {
+    const cycleSubjects = () => {
+      const subjects = ['physics', 'chemistry', 'math'];
+      const currentIndex = subjects.indexOf(currentSubject);
+      const nextSubject = subjects[(currentIndex + 1) % subjects.length];
+      animateTextChange(nextSubject);
+    };
+
+    const interval = setInterval(cycleSubjects, 2000);
+    return () => clearInterval(interval);
+  }, [currentSubject, isAnimating]);
 
   return (
     <div className="min-h-screen overflow-auto font-mono bg-white text-[#171717]">
@@ -131,10 +167,11 @@ export default function Home() {
             <div className="flex-1 flex flex-col justify-center lg:min-h-[500px]">
               <div>
                 <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal leading-tight text-left">
-                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Simulate</div>
-                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
+                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Understanding</div>
+                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}><span className="highlight-text">{currentSubject}</span></div>
+                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}>was never easier.</div>
                 </h1>
-                <p className="text-xl sm:text-2xl font-medium mb-12 text-left mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.</p>
+                <p className="text-xl sm:text-2xl font-medium mb-12 text-left mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Welcome to your own AI Science Lab.</p>
                 <div className="flex justify-start">
                   <Button variant="dark" onClick={() => setIsModalOpen(true)}>
                     Simulate Now
@@ -337,6 +374,34 @@ export default function Home() {
             <Button variant="dark" onClick={() => setIsModalOpen(true)}>
               Simulate Now
             </Button>
+          </div>
+        </div>
+        
+        {/* Duplicate Simulate Almost Anything Section */}
+        <div className="text-center mb-20 sm:mb-32 mt-16 lg:mt-32">
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-24 mb-8">
+            <div className="flex-1 flex flex-col justify-center lg:min-h-[500px]">
+              <div>
+                <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal leading-tight text-left">
+                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Simulate</div>
+                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
+                </h1>
+                <p className="text-xl sm:text-2xl font-medium mb-12 text-left mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.</p>
+                <div className="flex justify-start">
+                  <Button variant="dark" onClick={() => setIsModalOpen(true)}>
+                    Simulate Now
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <div className="flex-shrink-0">
+              <DesmosGraph 
+                expressions={defaultExpressions}
+                width="500px"
+                height="500px"
+                className="shadow-lg"
+              />
+            </div>
           </div>
         </div>
       </main>
