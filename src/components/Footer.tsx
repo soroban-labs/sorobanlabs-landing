@@ -28,7 +28,7 @@ export default function Footer() {
                 Soroban Labs
               </div>
               <div className="text-base" style={{ fontFamily: 'monospace', color: '#171717' }}>
-                © 2025 Soroban Labs. San Francisco, CA
+                © 2025 Soroban Labs. Bangalore, India
               </div>
               <div className="flex items-center gap-3 text-base" style={{ fontFamily: 'monospace', color: '#171717' }}>
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>

@@ -190,15 +190,15 @@ export default function Home() {
 
       <main className="relative z-0 flex flex-col items-center justify-center min-h-screen p-4 sm:p-10 py-16 sm:py-32">
         <div className="text-center mb-20 sm:mb-32">
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-24 mb-8">
-            <div className="flex-1 flex flex-col justify-center lg:min-h-[500px]">
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:gap-24 mb-8">
+            <div className="flex-1 flex flex-col justify-center lg:min-h-[500px] pl-6 pr-4 lg:px-0">
               <div>
                 <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal leading-tight text-left">
-                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Understanding</div>
-                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}><span className="highlight-text">{currentSubject}</span></div>
-                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}>was never easier.</div>
+                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(32px, 10vw, 80px)'}}>Understanding</div>
+                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(28px, 8vw, 65px)'}}><span className="highlight-text">{currentSubject}</span></div>
+                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(28px, 8vw, 65px)'}}>was never easier.</div>
                 </h1>
-                <p className="text-xl sm:text-2xl font-medium mb-12 text-left mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Welcome to your own AI Science Lab.</p>
+                <p className="text-lg sm:text-2xl font-medium mb-8 sm:mb-12 text-left mt-4 sm:mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Welcome to your own AI Science Lab.</p>
                 <div className="flex justify-start">
                   <Button variant="dark" onClick={() => setIsModalOpen(true)}>
                     Simulate Now
@@ -206,13 +206,25 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex-shrink-0">
-              <DesmosGraph 
-                expressions={defaultExpressions}
-                width="500px"
-                height="500px"
-                className="shadow-lg"
-              />
+            <div className="flex-shrink-0 px-4 lg:px-0">
+              {/* Mobile version */}
+              <div className="block lg:hidden">
+                <DesmosGraph 
+                  expressions={defaultExpressions}
+                  width="320px"
+                  height="320px"
+                  className="shadow-lg w-full max-w-[320px]"
+                />
+              </div>
+              {/* Desktop version */}
+              <div className="hidden lg:block">
+                <DesmosGraph 
+                  expressions={defaultExpressions}
+                  width="500px"
+                  height="500px"
+                  className="shadow-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -373,47 +385,16 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Final CTA Section */}
-        <div className="flex flex-col items-center justify-center w-full max-w-6xl mt-16 lg:mt-32 p-4 sm:p-8 rounded-lg" style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}>
-          <div className="w-full mb-8">
-            <div 
-              className="p-6 sm:p-12 rounded-lg w-full" 
-              style={{
-                backgroundColor: '#E6E6FA'
-              }}
-            >
-              <div 
-                className="font-normal text-center" 
-                style={{
-                  fontFamily: 'var(--font-libre-franklin)', 
-                  color: '#000000',
-                  fontSize: 'clamp(24px, 5vw, 40px)', 
-                  letterSpacing: '-2%',
-                  lineHeight: '1.1'
-                }}
-              >
-                A system that builds what you <span style={{fontFamily: 'var(--font-libre-baskerville)', fontStyle: 'italic'}}>imagine</span>,<br />one component at a time.
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="dark" onClick={() => setIsModalOpen(true)}>
-              Simulate Now
-            </Button>
-          </div>
-        </div>
         
         {/* Duplicate Simulate Almost Anything Section */}
-        <div className="text-center mb-20 sm:mb-32 mt-16 lg:mt-32">
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-24 mb-8">
-            <div className="flex-1 flex flex-col justify-center lg:min-h-[500px]">
+        <div className="text-center mb-20 sm:mb-32 lg:mb-8 mt-16 lg:mt-32">
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:gap-24 mb-8">
+            <div className="flex-1 flex flex-col justify-center lg:min-h-[500px] pl-6 pr-4 lg:px-0">
               <div>
-                <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal leading-tight text-left">
-                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Simulate</div>
-                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
+                <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal leading-tight text-left mb-8 sm:mb-12">
+                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(32px, 10vw, 80px)'}}>Simulate</div>
+                  <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(28px, 8vw, 65px)'}}>Almost <span className="highlight-text">Anything</span>.</div>
                 </h1>
-                <p className="text-xl sm:text-2xl font-medium mb-12 text-left mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>Create academic visualizations from text prompts.</p>
                 <div className="flex justify-start">
                   <Button variant="dark" onClick={() => setIsModalOpen(true)}>
                     Simulate Now
@@ -421,13 +402,25 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex-shrink-0">
-              <DesmosGraph3D 
-                expressions={glucoseExpressions}
-                width="500px"
-                height="500px"
-                className="shadow-lg"
-              />
+            <div className="flex-shrink-0 px-4 lg:px-0">
+              {/* Mobile version */}
+              <div className="block lg:hidden">
+                <DesmosGraph3D 
+                  expressions={glucoseExpressions}
+                  width="320px"
+                  height="320px"
+                  className="shadow-lg w-full max-w-[320px]"
+                />
+              </div>
+              {/* Desktop version */}
+              <div className="hidden lg:block">
+                <DesmosGraph3D 
+                  expressions={glucoseExpressions}
+                  width="500px"
+                  height="500px"
+                  className="shadow-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
