@@ -181,3 +181,213 @@ export const defaultExpressions = [
   }
 ];
 
+export const glucoseExpressions = [
+  {
+    "id": "ring_carbons",
+    "latex": "C = [(1.2, 0.0, 0.3), (0.6, 1.0, -0.3), (-0.6, 1.0, 0.3), (-1.2, 0.0, -0.3), (-0.6, -1.0, 0.3), (0.6, -1.0, -0.3)]",
+    "hidden": true
+  },
+  {
+    "id": "carbon_atoms",
+    "latex": "C",
+    "color": "#2d70b3",
+    "pointSize": 8,
+    "showLabel": true,
+    "label": "C"
+  },
+  {
+    "id": "ring_oxygen",
+    "latex": "(1.5, -0.8, 0.0)",
+    "color": "#c74440",
+    "pointSize": 7,
+    "showLabel": true,
+    "label": "O"
+  },
+  {
+    "id": "oh_oxygens",
+    "latex": "O_{OH} = [(0.6, 1.8, -0.6), (-0.6, 1.8, 0.6), (-1.8, 0.2, -0.6), (-0.6, -1.8, 0.6)]",
+    "hidden": true
+  },
+  {
+    "id": "hydroxyl_oxygens",
+    "latex": "O_{OH}",
+    "color": "#c74440",
+    "pointSize": 6,
+    "showLabel": true,
+    "label": "O"
+  },
+  {
+    "id": "ch2oh_carbon",
+    "latex": "(1.0, -1.8, -0.6)",
+    "color": "#2d70b3",
+    "pointSize": 8,
+    "showLabel": true,
+    "label": "C"
+  },
+  {
+    "id": "ch2oh_oxygen",
+    "latex": "(1.5, -2.5, -0.9)",
+    "color": "#c74440",
+    "pointSize": 6,
+    "showLabel": true,
+    "label": "O"
+  },
+  {
+    "id": "hydrogens",
+    "latex": "H = [(1.6, 0.3, 0.8), (1.0, 1.3, -0.8), (-1.0, 1.3, 0.8), (-1.6, -0.3, -0.8), (-1.0, -1.3, 0.8), (0.8, 1.0, 0.2), (-0.8, 1.0, -0.2), (-1.0, -0.3, 0.2), (-0.8, -1.0, -0.2), (1.5, -1.5, -1.1), (0.5, -2.1, -0.1)]",
+    "hidden": true
+  },
+  {
+    "id": "hydrogen_atoms",
+    "latex": "H",
+    "color": "#ffffff",
+    "pointSize": 4,
+    "showLabel": true,
+    "label": "H"
+  },
+  {
+    "id": "oh_hydrogens",
+    "latex": "O_H = [(0.9, 2.3, -0.9), (-0.9, 2.3, 0.9), (-2.3, 0.5, -0.9), (-0.9, -2.3, 0.9), (2.0, -3.0, -1.2)]",
+    "hidden": true
+  },
+  {
+    "id": "oh_hydrogen_atoms",
+    "latex": "O_H",
+    "color": "#ffffff",
+    "pointSize": 3,
+    "showLabel": true,
+    "label": "H"
+  },
+  {
+    "id": "ring_bond1",
+    "latex": "\\operatorname{vector}((1.2, 0.0, 0.3), (0.6, 1.0, -0.3))",
+    "color": "#348543"
+  },
+  {
+    "id": "ring_bond2",
+    "latex": "\\operatorname{vector}((0.6, 1.0, -0.3), (-0.6, 1.0, 0.3))",
+    "color": "#348543"
+  },
+  {
+    "id": "ring_bond3",
+    "latex": "\\operatorname{vector}((-0.6, 1.0, 0.3), (-1.2, 0.0, -0.3))",
+    "color": "#348543"
+  },
+  {
+    "id": "ring_bond4",
+    "latex": "\\operatorname{vector}((-1.2, 0.0, -0.3), (-0.6, -1.0, 0.3))",
+    "color": "#348543"
+  },
+  {
+    "id": "ring_bond5",
+    "latex": "\\operatorname{vector}((-0.6, -1.0, 0.3), (0.6, -1.0, -0.3))",
+    "color": "#348543"
+  },
+  {
+    "id": "ring_oxygen_bond1",
+    "latex": "\\operatorname{vector}((0.6, -1.0, -0.3), (1.5, -0.8, 0.0))",
+    "color": "#348543"
+  },
+  {
+    "id": "ring_oxygen_bond2",
+    "latex": "\\operatorname{vector}((1.5, -0.8, 0.0), (1.2, 0.0, 0.3))",
+    "color": "#348543"
+  },
+  {
+    "id": "oh_bond1",
+    "latex": "\\operatorname{vector}((0.6, 1.0, -0.3), (0.6, 1.8, -0.6))",
+    "color": "#c74440"
+  },
+  {
+    "id": "oh_bond2",
+    "latex": "\\operatorname{vector}((-0.6, 1.0, 0.3), (-0.6, 1.8, 0.6))",
+    "color": "#c74440"
+  },
+  {
+    "id": "oh_bond3",
+    "latex": "\\operatorname{vector}((-1.2, 0.0, -0.3), (-1.8, 0.2, -0.6))",
+    "color": "#c74440"
+  },
+  {
+    "id": "oh_bond4",
+    "latex": "\\operatorname{vector}((-0.6, -1.0, 0.3), (-0.6, -1.8, 0.6))",
+    "color": "#c74440"
+  },
+  {
+    "id": "ch2oh_bond",
+    "latex": "\\operatorname{vector}((0.6, -1.0, -0.3), (1.0, -1.8, -0.6))",
+    "color": "#348543"
+  },
+  {
+    "id": "ch2oh_oh_bond",
+    "latex": "\\operatorname{vector}((1.0, -1.8, -0.6), (1.5, -2.5, -0.9))",
+    "color": "#c74440"
+  },
+  {
+    "id": "ch_bond1",
+    "latex": "\\operatorname{vector}((1.2, 0.0, 0.3), (1.6, 0.3, 0.8))",
+    "color": "#6042a6"
+  },
+  {
+    "id": "ch_bond2",
+    "latex": "\\operatorname{vector}((0.6, 1.0, -0.3), (1.0, 1.3, -0.8))",
+    "color": "#6042a6"
+  },
+  {
+    "id": "ch_bond3",
+    "latex": "\\operatorname{vector}((-0.6, 1.0, 0.3), (-1.0, 1.3, 0.8))",
+    "color": "#6042a6"
+  },
+  {
+    "id": "ch_bond4",
+    "latex": "\\operatorname{vector}((-1.2, 0.0, -0.3), (-1.6, -0.3, -0.8))",
+    "color": "#6042a6"
+  },
+  {
+    "id": "ch_bond5",
+    "latex": "\\operatorname{vector}((-0.6, -1.0, 0.3), (-1.0, -1.3, 0.8))",
+    "color": "#6042a6"
+  },
+  {
+    "id": "oh_h_bond1",
+    "latex": "\\operatorname{vector}((0.6, 1.8, -0.6), (0.9, 2.3, -0.9))",
+    "color": "#fa7e19"
+  },
+  {
+    "id": "oh_h_bond2",
+    "latex": "\\operatorname{vector}((-0.6, 1.8, 0.6), (-0.9, 2.3, 0.9))",
+    "color": "#fa7e19"
+  },
+  {
+    "id": "oh_h_bond3",
+    "latex": "\\operatorname{vector}((-1.8, 0.2, -0.6), (-2.3, 0.5, -0.9))",
+    "color": "#fa7e19"
+  },
+  {
+    "id": "oh_h_bond4",
+    "latex": "\\operatorname{vector}((-0.6, -1.8, 0.6), (-0.9, -2.3, 0.9))",
+    "color": "#fa7e19"
+  },
+  {
+    "id": "oh_h_bond5",
+    "latex": "\\operatorname{vector}((1.5, -2.5, -0.9), (2.0, -3.0, -1.2))",
+    "color": "#fa7e19"
+  },
+  {
+    "id": "molecule_info",
+    "latex": "(0, 0, -2)",
+    "hidden": true,
+    "showLabel": true,
+    "label": "β-D-Glucose - C₆H₁₂O₆",
+    "color": "#000000"
+  },
+  {
+    "id": "bond_legend",
+    "latex": "(2, 2, 1.5)",
+    "hidden": true,
+    "showLabel": true,
+    "label": "Green: C-C bonds, Red: C-O bonds, Purple: C-H bonds, Orange: O-H bonds",
+    "color": "#000000"
+  }
+];
+

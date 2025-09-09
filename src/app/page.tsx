@@ -4,7 +4,8 @@ import Button from '../components/Button';
 import NavButton from '../components/NavButton';
 import Footer from '../components/Footer';
 import DesmosGraph from '../components/DesmosGraph';
-import { defaultExpressions } from '../data/desmosExpressions';
+import DesmosGraph3D from '../components/DesmosGraph3D';
+import { defaultExpressions, glucoseExpressions } from '../data/desmosExpressions';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -395,8 +396,8 @@ export default function Home() {
               </div>
             </div>
             <div className="flex-shrink-0">
-              <DesmosGraph 
-                expressions={defaultExpressions}
+              <DesmosGraph3D 
+                expressions={glucoseExpressions}
                 width="500px"
                 height="500px"
                 className="shadow-lg"
