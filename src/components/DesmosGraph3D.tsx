@@ -80,7 +80,7 @@ export default function DesmosGraph3D({
         };
 
         try {
-          calculatorInstance.current.setGraphSettings(graphSettings);
+          calculatorInstance.current?.setGraphSettings(graphSettings);
         } catch (error) {
           console.error('Error applying graph settings:', error);
         }
@@ -89,7 +89,7 @@ export default function DesmosGraph3D({
         if (expressions.length > 0) {
           expressions.forEach((expr, index) => {
             try {
-              calculatorInstance.current.setExpression(expr);
+              calculatorInstance.current?.setExpression(expr);
             } catch (error) {
               console.error(`Error adding expression ${index + 1}:`, error);
             }

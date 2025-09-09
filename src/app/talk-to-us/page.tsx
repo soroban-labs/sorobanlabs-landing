@@ -73,7 +73,7 @@ export default function TalkToUs() {
           </Link>
           <div className="flex items-center gap-3 text-base" style={{ fontFamily: 'monospace', color: '#999999' }}>
             <Link href="/">
-              <NavButton>
+              <NavButton onClick={() => {}}>
                 Home
               </NavButton>
             </Link>
@@ -87,11 +87,11 @@ export default function TalkToUs() {
             <div className="lg:w-[40%] flex flex-col justify-center lg:min-h-[500px]">
               <div>
                 <h1 className="text-5xl sm:text-6xl md:text-8xl font-normal leading-tight text-left">
-                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Let's</div>
+                  <div style={{fontFamily: 'var(--font-libre-baskerville)', textTransform: 'capitalize', color: '#000000', fontStyle: 'italic', fontSize: 'clamp(50px, 10vw, 80px)'}}>Let&apos;s</div>
                   <div style={{fontFamily: 'var(--font-libre-franklin)', textTransform: 'capitalize', color: '#000000', fontWeight: '300', fontSize: 'clamp(40px, 8vw, 65px)'}}>Connect.</div>
                 </h1>
                 <p className="text-xl sm:text-2xl font-medium mb-12 text-left mt-6" style={{fontFamily: '"Libre Franklin", sans-serif', fontWeight: 400, color: '#343434ff', maxWidth: '1000px'}}>
-                  Hi, I'm Atharva, Founder of Soroban Labs. I'd love to hear how we can make this tool more useful for you. No sales pitch—just a quick chat at a time that works best for you.
+                  Hi, I&apos;m Atharva, Founder of Soroban Labs. I&apos;d love to hear how we can make this tool more useful for you. No sales pitch—just a quick chat at a time that works best for you.
                 </p>
               </div>
             </div>
