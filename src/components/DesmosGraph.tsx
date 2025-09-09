@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react';
 declare global {
   interface Window {
     Desmos: {
-      GraphingCalculator: (element: HTMLElement, options?: any) => {
-        setExpression: (expr: any) => void;
+      GraphingCalculator: (element: HTMLElement, options?: Record<string, unknown>) => {
+        setExpression: (expr: Record<string, unknown>) => void;
         setBlank: () => void;
-        setMathBounds: (bounds: any) => void;
+        setMathBounds: (bounds: Record<string, unknown>) => void;
         setViewport: (bounds: number[]) => void;
         resize: () => void;
       };
@@ -16,7 +16,7 @@ declare global {
 }
 
 interface DesmosGraphProps {
-  expressions: any[];
+  expressions: Record<string, unknown>[];
   width?: string;
   height?: string;
   className?: string;
@@ -29,7 +29,7 @@ export default function DesmosGraph({
   className = "" 
 }: DesmosGraphProps) {
   const calculatorRef = useRef<HTMLDivElement>(null);
-  const calculatorInstance = useRef<any>(null);
+  const calculatorInstance = useRef<ReturnType<typeof window.Desmos.GraphingCalculator> | null>(null);
 
   useEffect(() => {
     const loadDesmos = () => {
@@ -51,7 +51,7 @@ export default function DesmosGraph({
         if (expressions.length > 0) {
           expressions.forEach((expr, index) => {
             try {
-              calculatorInstance.current.setExpression(expr);
+              calculatorInstance.current?.setExpression(expr);
             } catch (error) {
               console.error(`Error adding expression ${index + 1}:`, error);
             }

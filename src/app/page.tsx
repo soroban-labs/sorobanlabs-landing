@@ -55,7 +55,7 @@ export default function Home() {
 
     const interval = setInterval(cycleSubjects, 2000);
     return () => clearInterval(interval);
-  }, [currentSubject, isAnimating]);
+  }, [currentSubject, isAnimating, animateTextChange]);
 
   return (
     <div className="min-h-screen overflow-auto font-mono bg-white text-[#171717]">

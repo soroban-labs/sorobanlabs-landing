@@ -3,11 +3,11 @@ import { useEffect, useRef } from 'react';
 
 // Type for 3D Calculator (extending the existing global declaration)
 interface Calculator3D {
-  setExpression: (expr: any) => void;
+  setExpression: (expr: Record<string, unknown>) => void;
   setBlank: () => void;
-  setMathBounds: (bounds: any) => void;
+  setMathBounds: (bounds: Record<string, unknown>) => void;
   setViewport: (bounds: number[]) => void;
-  setGraphSettings: (settings: any) => void;
+  setGraphSettings: (settings: Record<string, unknown>) => void;
   resize: () => void;
   viewport?: {
     zoomFit: () => void;
@@ -15,7 +15,7 @@ interface Calculator3D {
 }
 
 interface DesmosGraph3DProps {
-  expressions: any[];
+  expressions: Record<string, unknown>[];
   width?: string;
   height?: string;
   className?: string;
@@ -33,7 +33,7 @@ export default function DesmosGraph3D({
   useEffect(() => {
     const loadDesmos = () => {
       if (window.Desmos && calculatorRef.current) {
-        calculatorInstance.current = (window.Desmos as any).Calculator3D(calculatorRef.current, {
+        calculatorInstance.current = (window.Desmos as unknown as { Calculator3D: (element: HTMLElement, options?: Record<string, unknown>) => Calculator3D }).Calculator3D(calculatorRef.current, {
           expressions: false,
           settingsMenu: false,
           zoomButtons: false,
