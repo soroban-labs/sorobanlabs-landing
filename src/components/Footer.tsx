@@ -1,4 +1,5 @@
 'use client'
+import { FaXTwitter } from 'react-icons/fa6'
 
 export default function Footer() {
   return (
@@ -33,6 +34,20 @@ export default function Footer() {
               <div className="flex items-center gap-3 text-base" style={{ fontFamily: 'monospace', color: '#171717' }}>
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 All services are online
+              </div>
+              <div className="flex items-center gap-3 mt-3">
+                <a 
+                  href="https://x.com/sorobanlabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-base transition-colors duration-200"
+                  style={{ fontFamily: 'monospace', color: '#171717', textDecoration: 'none' }}
+                  onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.color = '#6B6A9E'}
+                  onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.color = '#171717'}
+                >
+                  <FaXTwitter className="w-4 h-4" />
+                  Follow us
+                </a>
               </div>
             </div>
 

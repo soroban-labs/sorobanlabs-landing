@@ -29,6 +29,9 @@ const libreFranklin = Libre_Franklin({
 export const metadata: Metadata = {
   title: "Soroban Labs",
   description: "",
+  icons: {
+    icon: '/icon.ico',
+  },
 };
 
 export default function RootLayout({
