@@ -18,7 +18,7 @@ export default function Button({ onClick, children, className = "", variant = 'd
         backgroundColor: isDark ? '#6B6A9E' : 'transparent',
         color: isDark ? 'white' : '#6B6A9E',
         border: '2px solid #6B6A9E',
-        borderRadius: '0px',
+        borderRadius: '8px',
         cursor: 'pointer',
         transition: 'all 0.2s ease',
         boxShadow: isDark ? '0 4px 12px rgba(107, 106, 158, 0.3)' : '0 4px 12px rgba(107, 106, 158, 0.2)'

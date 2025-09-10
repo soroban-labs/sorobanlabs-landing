@@ -15,7 +15,7 @@ export default function NavButton({ onClick, children }: NavButtonProps) {
         backgroundColor: 'transparent',
         color: '#6B6A9E',
         border: '1px solid #6B6A9E',
-        borderRadius: '0px',
+        borderRadius: '8px',
         cursor: 'pointer',
         transition: 'all 0.2s ease',
         boxShadow: '0 4px 12px rgba(107, 106, 158, 0.2)'

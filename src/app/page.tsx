@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Button from '../components/Button';
 import NavButton from '../components/NavButton';
 import Footer from '../components/Footer';
@@ -23,7 +23,7 @@ export default function Home() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const animateTextChange = (newSubject: string) => {
+  const animateTextChange = useCallback((newSubject: string) => {
     if (isAnimating || currentSubject === newSubject) return;
     
     setIsAnimating(true);
@@ -43,7 +43,7 @@ export default function Home() {
         clearInterval(interval);
       }
     }, 50);
-  };
+  }, [isAnimating, currentSubject]);
 
   useEffect(() => {
     const cycleSubjects = () => {
@@ -160,7 +160,7 @@ export default function Home() {
                   backgroundColor: 'transparent',
                   color: '#6B6A9E',
                   border: '1px solid #6B6A9E',
-                  borderRadius: '0px',
+                  borderRadius: '8px',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
                   boxShadow: '0 4px 12px rgba(107, 106, 158, 0.2)'
@@ -434,32 +434,41 @@ export default function Home() {
           onClick={(e) => e.target === e.currentTarget && setIsModalOpen(false)}
         >
           <div 
-            className="p-8 rounded-lg max-w-md w-full mx-4"
+            className="p-10 rounded-2xl max-w-lg w-full mx-4"
             style={{
               backgroundColor: 'white',
-              border: '2px solid #6B6A9E',
-              boxShadow: '0 8px 24px rgba(107, 106, 158, 0.3)'
+              border: '1px solid rgba(107, 106, 158, 0.2)',
+              boxShadow: '0 20px 40px rgba(107, 106, 158, 0.15)',
+              backdropFilter: 'blur(10px)'
             }}
           >
             <h2 
-              className="text-2xl font-normal mb-4 text-center"
+              className="text-2xl font-normal mb-6 text-center"
               style={{
-                fontFamily: 'var(--font-libre-baskerville)',
-                fontStyle: 'italic',
-                color: '#000000'
+                fontFamily: 'var(--font-libre-franklin)',
+                fontWeight: '500',
+                color: '#2D2D2D',
+                fontSize: '32px',
+                letterSpacing: '-0.5px',
+                lineHeight: '1.2'
               }}
             >
               Hi! We&apos;re glad you&apos;re interested
             </h2>
             <p 
-              className="text-base mb-6 text-center"
+              className="text-base mb-8 text-center"
               style={{
-                fontFamily: '"Red Hat Mono", monospace',
-                color: '#343434',
-                lineHeight: '1.5'
+                fontFamily: 'var(--font-libre-franklin)',
+                color: '#666666',
+                lineHeight: '1.6',
+                fontSize: '16px',
+                fontWeight: '400',
+                marginBottom: '2rem'
               }}
             >
               Please type in your email address so we can send the link of the beta to you.
+              <br />
+              Don&apos;t worry, we will <span style={{fontWeight: '550'}}>never</span> spam you or share your information with someone else.
             </p>
             <form 
               action="https://formspree.io/f/xwpqjrwl"
@@ -474,35 +483,47 @@ export default function Home() {
                 name="email"
                 placeholder="your.email@example.com"
                 required
-                className="w-full px-4 py-3 border-2 rounded-none"
+                className="w-full px-5 py-4 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200"
                 style={{
-                  fontFamily: '"Red Hat Mono", monospace',
-                  backgroundColor: 'white',
-                  borderColor: '#6B6A9E',
-                  color: '#343434',
-                  fontSize: '14px'
+                  fontFamily: 'var(--font-libre-franklin)',
+                  backgroundColor: '#FAFAFA',
+                  borderColor: 'rgba(107, 106, 158, 0.3)',
+                  color: '#2D2D2D',
+                  fontSize: '16px',
+                  fontWeight: '400',
+                  lineHeight: '1.4'
+                }}
+                onFocus={(e) => {
+                  e.target.style.backgroundColor = 'white';
+                  e.target.style.borderColor = '#6B6A9E';
+                }}
+                onBlur={(e) => {
+                  e.target.style.backgroundColor = '#FAFAFA';
+                  e.target.style.borderColor = 'rgba(107, 106, 158, 0.3)';
                 }}
               />
-              <div className="flex gap-3 justify-center">
+              <div className="flex gap-4 justify-center mt-6">
                 <button
                   type="submit"
-                  className="px-6 py-2 text-sm font-normal"
+                  className="px-8 py-3 text-base font-medium rounded-lg transition-all duration-200"
                   style={{
                     fontFamily: 'var(--font-libre-franklin)',
-                    backgroundColor: 'white',
-                    color: '#6B6A9E',
-                    border: '2px solid #6B6A9E',
-                    borderRadius: '0px',
+                    backgroundColor: '#6B6A9E',
+                    color: 'white',
+                    border: 'none',
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease'
+                    boxShadow: '0 4px 12px rgba(107, 106, 158, 0.3)',
+                    fontWeight: '500'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#6B6A9E';
-                    e.currentTarget.style.color = 'white';
+                    e.currentTarget.style.backgroundColor = '#5A5994';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(107, 106, 158, 0.4)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'white';
-                    e.currentTarget.style.color = '#6B6A9E';
+                    e.currentTarget.style.backgroundColor = '#6B6A9E';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(107, 106, 158, 0.3)';
                   }}
                 >
                   Send Me Access
@@ -510,23 +531,24 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-6 py-2 text-sm font-normal"
+                  className="px-8 py-3 text-base font-medium rounded-lg transition-all duration-200"
                   style={{
                     fontFamily: 'var(--font-libre-franklin)',
                     backgroundColor: 'transparent',
-                    color: '#999999',
-                    border: '2px solid #999999',
-                    borderRadius: '0px',
+                    color: '#888888',
+                    border: '1px solid rgba(136, 136, 136, 0.3)',
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease'
+                    fontWeight: '400'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#6B6A9E';
-                    e.currentTarget.style.color = '#6B6A9E';
+                    e.currentTarget.style.backgroundColor = '#F5F5F5';
+                    e.currentTarget.style.color = '#666666';
+                    e.currentTarget.style.borderColor = 'rgba(136, 136, 136, 0.5)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#999999';
-                    e.currentTarget.style.color = '#999999';
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = '#888888';
+                    e.currentTarget.style.borderColor = 'rgba(136, 136, 136, 0.3)';
                   }}
                 >
                   Cancel
